@@ -1,0 +1,67 @@
+#include<stdio.h>
+
+void read_details(char* name,int* type,int* days)
+{
+    printf("Enter Patient Name: ");
+    scanf("%s",name);
+    printf("Enter Patient Type(1.General 2.Semi-Private 3.Private): ");
+    scanf("%d", type);
+    printf("Enter the Number of Days Admitted: ");
+    scanf("%d", days);
+    
+}
+
+float calculateBill(int type, int days)
+{   float bill;
+    if(type==1)
+        bill=days*1000;
+    else if(type==2)
+        bill=days*2000;
+    else if(type==3)
+        bill=days*5000;
+    
+    return bill;
+}
+
+void main()
+{
+    char name[20];
+    int type;
+    int days;
+    float discount=0;
+    float bill;
+    float final_bill;
+    
+    read_details(name,&type,&days);
+    
+    bill = calculateBill(type,days);
+    
+    if(days>7)
+        {
+            discount = (bill*5)/100;
+            final_bill = bill - discount;
+        }
+        else
+            final_bill=bill;
+            
+            
+    printf("\nPatient Name: %s\n",name);
+    printf("Total Bill Before Discount: %f\n",bill);
+    printf("Discount Applied: %f\n",discount);
+    printf("Final Bill Amount: %f\n",final_bill);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
