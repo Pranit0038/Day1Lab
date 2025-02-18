@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<string.h>
+void read_employee(int* p_id,char* name,float* p_salary,int* p_attendance)
+{
+    printf("Enter id:");
+    scanf("%d", p_id);
+    printf("Enter name:");
+    scanf("%s", name);
+    printf("Enter salary:");
+    scanf("%f", p_salary);
+    printf("Enter number of days worked:");
+    scanf("%d", p_attendance);
+}
+
+float calc_bonus(float salary, int attendance)
+{
+    float bonus = 0.0f;
+    if(attendance > 25)
+    {
+        bonus = (salary*5)/100;
+    }
+    else if(attendance < 10)
+    {
+        bonus = (-1*((salary/100)*50));
+    }
+    return bonus;
+}
+
+void calc_status(char* status, int attendance)
+{
+    if(attendance > 25)
+    {
+        strcpy(status, "Excellent");
+    }
+    else if(attendance < 15) 
+    {
+        strcpy(status, "Need Improvement");
+    }
+}
+
+void disp_employee(int id,char* name, float finalsal,char* status)
+{   
+    printf("Employee Details:\n");
+    printf("ID\tName\tSalary\tStatus\n");
+    printf("%d\t%s\t%0.1f\t%s\t\n",id,name,finalsal,status);
+    
+}
+
+int main() {
+    int id;
+    char name[20];
+    float salary;
+    int attendance;
+    float bonus = 0;
+    float final_salary = 0;
+    char status[20] = "Good";
+    
+     //Enter Details
+    read_employee(&id,name,&salary,&attendance);
+    
+    //Calculate bonus
+    bonus = calc_bonus(salary, attendance);
+    //Calculate Salary
+    final_salary = (salary + bonus);
+    //Employee status
+    calc_status(status, attendance);
+
+    //Display Employee Details
+    disp_employee(id,name,final_salary,status);
+    return 0;
+} 
