@@ -1,0 +1,46 @@
+#include<stdio.h>
+
+void process_votes(int voters,int votes[])
+{   
+    int candidate[5];
+    int i;
+    for(i=0;i<voters;i++)
+    {
+        candidate[i] = 0;
+    }
+    for(i=0;i<voters;i++)
+    {
+        switch(votes[i])
+        {
+            case 1: candidate[0]++;
+                    break;
+            case 2: candidate[1]++;
+                    break;
+            case 3: candidate[2]++;
+                    break;
+            case 4: candidate[3]++;
+                    break;
+            case 5: candidate[4]++;
+                    break;
+            
+        }
+    }
+    for(i=0;i<5;i++)
+    {
+        printf("Candidate %d: %d votes\n",(i+1),candidate[i]);
+    }
+}
+
+int main()
+{
+    int voters;
+    int votes[100];
+    printf("Enter the number of votes: ");
+    scanf("%d",&voters);
+    printf("Enter votes(1-5): ");
+    for(int i=0;i<voters;i++)
+        scanf("%d",&votes[i]);
+        
+    process_votes(voters, votes);
+    return 0;
+}
