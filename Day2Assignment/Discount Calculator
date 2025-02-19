@@ -1,0 +1,26 @@
+#include<stdio.h>
+
+float calc_bill(float bill)
+{
+    float discount=0;
+    if((bill>=500)&&(bill<=1000))
+        discount=bill/10;
+    else if(bill>1000)
+        discount=bill/5;
+    
+    return bill-discount;
+}
+
+
+void main()
+{
+    float bill;
+    float final_bill;
+    
+    printf("Enter Total Bill Amount: ");
+    scanf("%f",&bill);
+    final_bill = calc_bill(bill);
+    printf("\nFinal Bill Amount: %0.2f\n",final_bill);
+    
+    
+}
